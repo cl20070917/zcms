@@ -1,0 +1,8 @@
+com\zhijia\zcms\service\ChannelService.class
+com\zhijia\zcms\service\impl\ChannelServiceImpl.class
+com\zhijia\zcms\service\impl\RoleServiceImpl.class
+com\zhijia\zcms\service\RoleService.class
+com\zhijia\zcms\service\impl\UserServiceImpl.class
+com\zhijia\zcms\service\impl\GroupServiceImpl.class
+com\zhijia\zcms\service\GroupService.class
+com\zhijia\zcms\service\UserService.class
