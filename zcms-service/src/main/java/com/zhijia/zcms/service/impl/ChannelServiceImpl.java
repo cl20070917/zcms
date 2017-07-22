@@ -76,4 +76,8 @@ public class ChannelServiceImpl implements ChannelService {
 	public void updateSort(Integer[] ids) {
 		channelDao.updateSort(ids);
 	}
+	@Override
+	public List<Channel> listPublishChannel() {
+		return channelDao.listPublishChannel();
+	}
 }

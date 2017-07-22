@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.zhijia.zcms.dao.ChannelDao;
 import com.zhijia.zcms.model.cnt.Channel;
 import com.zhijia.zcms.model.cnt.ChannelTree;
+import com.zhijia.zcms.model.cnt.ChannelType;
 
 @Repository("channelDao")
 public class ChannelDaoImpl extends BaseDaoImpl<Channel> implements ChannelDao {
@@ -61,5 +62,11 @@ public class ChannelDaoImpl extends BaseDaoImpl<Channel> implements ChannelDao {
 		for (Integer id : ids) {
 			this.updateByHql(hql, new Object[] { index++, id });
 		}
+	}
+	@Override
+	public List<Channel> listPublishChannel() {
+		System.out.println(ChannelType.NAV_CHANNEL.ordinal());
+		String hql = "select new Channel(c.id,c.name) from Channel c where c.status=1 and c.type!="+ChannelType.NAV_CHANNEL.ordinal();
+		return this.list(hql);
 	}
 }

@@ -34,4 +34,9 @@ public interface ChannelDao extends BaseDao<Channel> {
 	 * @param ids
 	 */
 	public void updateSort(Integer[] ids);
+	/**
+	 * 获取所有的可以发布文章的栏目，栏目的状态必须为启用状态
+	 * @return
+	 */
+	public List<Channel> listPublishChannel();
 }
