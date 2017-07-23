@@ -60,4 +60,15 @@ public class AttachmentDaoImpl extends BaseDaoImpl<Attachment> implements Attach
 		return this.list(getAttachmentSelect() + " from Attachment a where a.topic.id=? " + "and a.isAttach=1", tid);
 	}
 
+	@Override
+	public Pager<Attachment> listAllIndexPic() {
+		String hql = getAttachmentSelect() + " from Attachment a where a.isImg=? and a.topic.status=1";
+		return this.find(hql, 1);
+	}
+
+	@Override
+	public long findNoUseAttachmentNum() {
+		String hql = "select count(*) from Attachment a where a.topic is null";
+		return (Long) this.getSession().createQuery(hql).uniqueResult();
+	}
 }

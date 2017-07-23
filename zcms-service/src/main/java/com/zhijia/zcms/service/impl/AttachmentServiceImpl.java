@@ -28,67 +28,65 @@ public class AttachmentServiceImpl implements AttachmentService {
 	public final static int THUMBNAIL_WIDTH = 100;
 	public final static int THUMBNAIL_HEIGHT = 80;
 	private AttachmentDao attachmentDao;
-	public final static String UPLOAD_PATH="/upload/";
-	
-	
+	public final static String UPLOAD_PATH = "/upload/";
+
 	public AttachmentDao getAttachmentDao() {
 		return attachmentDao;
 	}
-	
+
 	public static void deleteAttachFiles(Attachment a) {
 		String realPath = SystemContext.getRealPath();
-		realPath +=UPLOAD_PATH;
-		new File(realPath+a.getNewName()).delete();
+		realPath += UPLOAD_PATH;
+		new File(realPath + a.getNewName()).delete();
 	}
-	
+
 	@Inject
 	public void setAttachmentDao(AttachmentDao attachmentDao) {
 		this.attachmentDao = attachmentDao;
 	}
 
 	@Override
-	public void add(Attachment a,InputStream is) throws IOException {
+	public void add(Attachment a, InputStream is) throws IOException {
 		try {
 			attachmentDao.add(a);
-			addFile(a,is);
+			addFile(a, is);
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw e;
 		}
 	}
-	
-	private void addFile(Attachment a,InputStream is) throws IOException {
-		//进行文件的存储
+
+	private void addFile(Attachment a, InputStream is) throws IOException {
+		// 进行文件的存储
 		String realPath = SystemContext.getRealPath();
-		String path = realPath+"/resources/upload/";
-		String thumbPath = realPath+"/resources/upload/thumbnail/";
+		String path = realPath + "/resources/upload/";
+		String thumbPath = realPath + "/resources/upload/thumbnail/";
 		File fp = new File(path);
 		File tfp = new File(thumbPath);
-//		System.out.println(fp.exists());
-//		System.out.println(tfp.exists());
-		if(!fp.exists()) fp.mkdirs();
-		if(!tfp.exists()) tfp.mkdirs();
-		path = path+a.getNewName();
-		thumbPath = thumbPath+a.getNewName();
-//		System.out.println(path+","+thumbPath);
-		if(a.getIsImg()==1) {
+		// System.out.println(fp.exists());
+		// System.out.println(tfp.exists());
+		if (!fp.exists())
+			fp.mkdirs();
+		if (!tfp.exists())
+			tfp.mkdirs();
+		path = path + a.getNewName();
+		thumbPath = thumbPath + a.getNewName();
+		// System.out.println(path+","+thumbPath);
+		if (a.getIsImg() == 1) {
 			BufferedImage oldBi = ImageIO.read(is);
 			int width = oldBi.getWidth();
 			Builder<BufferedImage> bf = Thumbnails.of(oldBi);
-			if(width>IMG_WIDTH) {
-				bf.scale((double)IMG_WIDTH/(double)width);
+			if (width > IMG_WIDTH) {
+				bf.scale((double) IMG_WIDTH / (double) width);
 			} else {
 				bf.scale(1.0f);
 			}
 			bf.toFile(path);
-			//缩略图的处理
-			//1、将原图进行压缩
-			BufferedImage tbi = Thumbnails.of(oldBi)
-						.scale((THUMBNAIL_WIDTH*1.2)/width).asBufferedImage();
-			//2、进行切割并且保持
-			Thumbnails.of(tbi).scale(1.0f)
-				.sourceRegion(Positions.CENTER, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT)
-				.toFile(thumbPath);
+			// 缩略图的处理
+			// 1、将原图进行压缩
+			BufferedImage tbi = Thumbnails.of(oldBi).scale((THUMBNAIL_WIDTH * 1.2) / width).asBufferedImage();
+			// 2、进行切割并且保持
+			Thumbnails.of(tbi).scale(1.0f).sourceRegion(Positions.CENTER, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT).toFile(thumbPath);
 		} else {
 			FileUtils.copyInputStreamToFile(is, new File(path));
 		}
@@ -139,8 +137,8 @@ public class AttachmentServiceImpl implements AttachmentService {
 	@Override
 	public void updateIndexPic(int aid) {
 		Attachment att = attachmentDao.load(aid);
-		System.out.println(aid+"------------>");
-		if(att.getIsIndexPic()==0) {
+		System.out.println(aid + "------------>");
+		if (att.getIsIndexPic() == 0) {
 			att.setIsIndexPic(1);
 		} else {
 			att.setIsIndexPic(0);
@@ -151,7 +149,7 @@ public class AttachmentServiceImpl implements AttachmentService {
 	@Override
 	public void updateAttachInfo(int aid) {
 		Attachment att = attachmentDao.load(aid);
-		if(att.getIsAttach()==0) {
+		if (att.getIsAttach() == 0) {
 			att.setIsAttach(1);
 		} else {
 			att.setIsAttach(0);
@@ -159,4 +157,13 @@ public class AttachmentServiceImpl implements AttachmentService {
 		attachmentDao.update(att);
 	}
 
+	@Override
+	public Pager<Attachment> listAllPic() {
+		return attachmentDao.listAllIndexPic();
+	}
+
+	@Override
+	public long findNoUseAttachmentNum() {
+		return attachmentDao.findNoUseAttachmentNum();
+	}
 }

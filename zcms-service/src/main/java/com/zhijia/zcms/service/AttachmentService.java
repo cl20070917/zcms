@@ -50,4 +50,8 @@ public interface AttachmentService {
 	
 	public void updateAttachInfo(int aid);
 	
+	public Pager<Attachment> listAllPic();
+	
+	public long findNoUseAttachmentNum();
+	
 }

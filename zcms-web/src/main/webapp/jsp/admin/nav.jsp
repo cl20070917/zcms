@@ -52,21 +52,22 @@ $(function(){
 			<span class="navTilteTxt">系统配置</span>
 		</h3>
 		<li class="navChild">
-			<a href="<%=request.getContextPath() %>/admin/hyperlink/hyperlinks" target="content">超级链接管理</a>
+			<a href="<%=request.getContextPath() %>/admin/cmsLink/links" target="content">超级链接管理</a>
 		</li>
 		<li class="navChild">
 			<a href="<%=request.getContextPath() %>/admin/system/baseinfo" target="content">网站信息管理</a>
 		</li>
 		<li class="navChild">
-			<a href="<%=request.getContextPath() %>/admin/newImgManage/newImgManage" target="content">首页图片管理</a>
+			<a href="<%=request.getContextPath() %>/admin/pic/indexPics" target="content">首页图片管理</a>
 		</li>
 		<li class="navChild">
-			<a href="<%=request.getContextPath() %>/admin/backup/sqls" target="content">网站数据备份</a>
+			<a href="<%=request.getContextPath() %>/admin/backups" target="content">网站数据备份</a>
 		</li>
 		<li class="navChild">
-			<a href="<%=request.getContextPath() %>/admin/systemClean/articleList" target="content">系统清理管理</a>
+			<a href="<%=request.getContextPath() %>/admin/system/cleans" target="content">系统清理管理</a>
 		</li>
 	</ul>
 </c:if>
 		</div>
+</body>
 </html>

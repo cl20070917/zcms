@@ -44,4 +44,11 @@ public interface AttachmentDao extends BaseDao<Attachment>{
 	 * @return
 	 */
 	public List<Attachment> listAttachByTopic(int tid);
+	/**
+	 * 获取所有的新闻图片信息
+	 * @return
+	 */
+	public Pager<Attachment> listAllIndexPic();
+	
+	public long findNoUseAttachmentNum();
 }
