@@ -211,6 +211,16 @@ a.list_op:link,a.list_op:visited {
 a.list_op:hover {
 	background:#971;
 }
+
+a.list_opg:link,a.list_opg:visited {
+	background:#291;
+	padding:4px;
+	color:#fff;
+	text-decoration:none;
+}
+a.list_opg:hover {
+	background:#971;
+}
 a.list_link:link,a.list_link:visited {
 	color:#932;
 	text-decoration: none;
