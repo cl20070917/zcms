@@ -6,7 +6,7 @@ function openWin(f,n,w,h,s){
 		sFeatures = "fullscreen=yes,center=1,scrollbars=1,status=0,directories=0,channelmode=0";
 	} else {
 		sFeatures = "left="+ l +",top="+ t +",height="+ h +",width="+ w
-		+ ",center=1,scrollbars=" + sb + ",status=0,directories=0,channelmode=0";
+		+ ",center=1,scrollbars=" + sb + ",status=0,directories=0,channelmode=0,alwaysRaised=yes";
 	}
 	openwin = window.open(f , n , sFeatures );
 }
