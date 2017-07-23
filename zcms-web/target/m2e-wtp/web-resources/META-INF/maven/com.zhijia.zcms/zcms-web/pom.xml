@@ -38,7 +38,7 @@
 			<artifactId>zcms-service</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.zhijia.zcms.basic</groupId>
+			<groupId>com.zhijia.zcms</groupId>
 			<artifactId>zcms-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>

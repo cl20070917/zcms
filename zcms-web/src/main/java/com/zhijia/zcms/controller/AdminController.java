@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.zhijia.zcms.auth.AuthMethod;
 import com.zhijia.zcms.model.yh.User;
 import com.zhijia.zcms.service.UserService;
+import com.zhijia.zcms.web.CmsSessionContext;
 
 @Controller
 public class AdminController {
@@ -23,6 +24,7 @@ public class AdminController {
 	@AuthMethod
 	@RequestMapping("/admin/logout")
 	public String logout(HttpSession session) {
+		CmsSessionContext.removeSession(session);
 		session.invalidate();
 		return "redirect:/login";
 	}}

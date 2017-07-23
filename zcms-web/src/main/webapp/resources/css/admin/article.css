@@ -80,7 +80,7 @@ tr.addAtt {
 	/*border-right:1px solid #555;*/
 }
 
-ul h3.navTitle,#content h3 {
+ul h3.navTitle,#contents h3 {
 	height:28px;
 	background:url("img/nav_title_bg.jpg") repeat-x;
 	border-top:1px solid #7da2bf;
@@ -122,7 +122,7 @@ ul li.navChild a:hover {
 /*--------------------------left begin --------------------------------------*/
 
 /*--------------------------content begin -----------------------------------*/
-#content {
+#contents {
 	border-left:3px solid #aaa;
 }
 
@@ -135,7 +135,7 @@ h3.admin_link_bar span a {
 	margin:0 5px;
 }
 
-#content h1 {
+#contents h1 {
 	position:relative;
 	width:300px;
 	left:300px;

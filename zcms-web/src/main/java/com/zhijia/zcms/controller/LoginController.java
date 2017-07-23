@@ -22,20 +22,12 @@ import com.zhijia.zcms.model.yh.Role;
 import com.zhijia.zcms.model.yh.RoleType;
 import com.zhijia.zcms.model.yh.User;
 import com.zhijia.zcms.service.UserService;
+import com.zhijia.zcms.web.CmsSessionContext;
 
 @Controller
 public class LoginController {
-	private UserService userService;
-
-	public UserService getUserService() {
-		return userService;
-	}
-	
 	@Inject
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
-	
+	private UserService userService;
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String login() {
 		return "admin/login";
@@ -51,11 +43,15 @@ public class LoginController {
 		User loginUser = userService.login(username, password);
 		session.setAttribute("loginUser", loginUser);
 		List<Role> rs = userService.listUserRoles(loginUser.getId());
-		boolean isAdmin = isAdmin(rs);
+		boolean isAdmin = isRole(rs,RoleType.ROLE_ADMIN);
 		session.setAttribute("isAdmin", isAdmin);
-		if(!isAdmin)
+		if(!isAdmin) {
 			session.setAttribute("allActions", getAllActions(rs, session));
+			session.setAttribute("isAudit", isRole(rs,RoleType.ROLE_AUDIT));
+			session.setAttribute("isPublish", isRole(rs,RoleType.ROLE_PUBLISH));
+		}
 		session.removeAttribute("cc");
+		CmsSessionContext.addSessoin(session);
 		return "redirect:/admin";
 	}
 	
@@ -71,12 +67,14 @@ public class LoginController {
 		return actions;
 	}
 	
-	private boolean isAdmin(List<Role> rs) {
+	
+	private boolean isRole(List<Role> rs,RoleType rt) {
 		for(Role r:rs) {
-			if(r.getRoleType()==RoleType.ROLE_ADMIN) return true;
+			if(r.getRoleType()==rt) return true;
 		}
 		return false;
 	}
+	
 	
 	@RequestMapping("/drawCheckCode")
 	public void drawCheckCode(HttpServletResponse resp,HttpSession session) throws IOException {

@@ -43,11 +43,11 @@ $(function(){
 	</li>
 	</c:if>
 	<li class="navChild">
-		<a href="<%=request.getContextPath() %>/admin/article/publishs" target="content">文章信息管理</a>
+		<a href="<%=request.getContextPath() %>/admin/topic/audits" target="content">文章信息管理</a>
 	</li>
 </ul>
 <c:if test="${isAdmin }">
-	<ul class="navMenu">
+	<ul class="navMenu navSelected">
 		<h3 class="navTitle">
 			<span class="navTilteTxt">系统配置</span>
 		</h3>
@@ -55,7 +55,7 @@ $(function(){
 			<a href="<%=request.getContextPath() %>/admin/hyperlink/hyperlinks" target="content">超级链接管理</a>
 		</li>
 		<li class="navChild">
-			<a href="<%=request.getContextPath() %>/admin/webInfo/showWebInfo" target="content">网站信息管理</a>
+			<a href="<%=request.getContextPath() %>/admin/system/baseinfo" target="content">网站信息管理</a>
 		</li>
 		<li class="navChild">
 			<a href="<%=request.getContextPath() %>/admin/newImgManage/newImgManage" target="content">首页图片管理</a>
@@ -69,5 +69,4 @@ $(function(){
 	</ul>
 </c:if>
 		</div>
-</body>
 </html>

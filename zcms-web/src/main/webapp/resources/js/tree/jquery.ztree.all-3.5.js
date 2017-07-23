@@ -1642,7 +1642,7 @@
 			} else if (setting.async.enable && setting.async.url && setting.async.url !== '') {
 				view.asyncNode(setting);
 			}
-			return zs;
+			return zTreeTools;
 		}
 	};
 

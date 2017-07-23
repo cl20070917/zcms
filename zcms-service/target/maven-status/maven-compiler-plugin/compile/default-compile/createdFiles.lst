@@ -1,8 +1,14 @@
+com\zhijia\zcms\service\KeywordService.class
 com\zhijia\zcms\service\ChannelService.class
+com\zhijia\zcms\service\impl\TopicServiceImpl.class
+com\zhijia\zcms\service\AttachmentService.class
+com\zhijia\zcms\service\impl\AttachmentServiceImpl.class
+com\zhijia\zcms\service\impl\KeywordServiceImpl.class
 com\zhijia\zcms\service\impl\ChannelServiceImpl.class
 com\zhijia\zcms\service\impl\RoleServiceImpl.class
 com\zhijia\zcms\service\RoleService.class
 com\zhijia\zcms\service\impl\UserServiceImpl.class
 com\zhijia\zcms\service\impl\GroupServiceImpl.class
 com\zhijia\zcms\service\GroupService.class
+com\zhijia\zcms\service\TopicService.class
 com\zhijia\zcms\service\UserService.class

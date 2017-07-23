@@ -18,6 +18,15 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		HttpSession session = request.getSession();
+		/*
+		 * 如果使用uploadify进行文件的上传，由于flash的bug问题，会产生一个新的session，此时验证失败
+		 * 所以必须在此处获取一个原有的session，然后重置session信息
+		 */
+		String sid = request.getParameter("sid");
+		if(sid!=null&&!"".equals(sid.trim())) {
+			//当sid有值，就表示是通过uploadify上传文件，此时就应该获取原有的session
+			session = CmsSessionContext.getSession(sid);
+		}
 		HandlerMethod hm = (HandlerMethod)handler;
 		User user = (User)session.getAttribute("loginUser");
 		if(user==null) {

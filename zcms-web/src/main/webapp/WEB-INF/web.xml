@@ -34,8 +34,10 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath*:spring-beans.xml</param-value>
-
 	</context-param>
+	<listener>
+		<listener-class>com.zhijia.zcms.web.CmsSessionListener</listener-class>
+	</listener>
 	<!-- Spring中提供了 org.springframework.orm.hibernate3.support.OpenSessionInViewFilter; 这个类来实现OpenSessionInViewer的操作 -->
 	<filter>
 		<filter-name>openSessionInViewerFilter</filter-name>

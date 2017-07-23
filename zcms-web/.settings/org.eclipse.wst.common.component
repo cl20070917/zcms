@@ -10,6 +10,9 @@
         <dependent-module archiveName="zcms-service-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/zcms-service/zcms-service">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="zcms-common-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/zcms-common/zcms-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/zcms-web/target/classes"/>
         <property name="context-root" value="zcms-web"/>
     </wb-module>

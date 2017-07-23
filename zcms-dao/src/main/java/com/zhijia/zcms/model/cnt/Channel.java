@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name="cnt_channel")
+@Table(name = "cnt_channel")
 public class Channel {
 	public static final String ROOT_NAME = "网站系统栏目";
 	public static final int ROOT_ID = 0;
@@ -20,7 +20,7 @@ public class Channel {
 	 */
 	private int id;
 	/**
-	 *栏目的名称 
+	 * 栏目的名称
 	 */
 	private String name;
 	/**
@@ -59,84 +59,110 @@ public class Channel {
 	 * 父类栏目
 	 */
 	private Channel parent;
-	
-	
+
 	@ManyToOne
-	@JoinColumn(name="pid")
+	@JoinColumn(name = "pid")
 	public Channel getParent() {
 		return parent;
 	}
+
 	public void setParent(Channel parent) {
 		this.parent = parent;
 	}
+
 	@Id
 	@GeneratedValue
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	@NotEmpty(message="栏目名称不能为空")
+
+	@NotEmpty(message = "栏目名称不能为空")
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	@Column(name="custom_link")
+
+	@Column(name = "custom_link")
 	public int getCustomLink() {
 		return customLink;
 	}
+
 	public void setCustomLink(int customLink) {
 		this.customLink = customLink;
 	}
-	
-	@Column(name="custom_link_url")
+
+	@Column(name = "custom_link_url")
 	public String getCustomLinkUrl() {
 		return customLinkUrl;
 	}
+
 	public void setCustomLinkUrl(String customLinkUrl) {
 		this.customLinkUrl = customLinkUrl;
 	}
+
 	public ChannelType getType() {
 		return type;
 	}
+
 	public void setType(ChannelType type) {
 		this.type = type;
 	}
-	@Column(name="is_index")
+
+	@Column(name = "is_index")
 	public int getIsIndex() {
 		return isIndex;
 	}
+
 	public void setIsIndex(int isIndex) {
 		this.isIndex = isIndex;
 	}
-	@Column(name="is_top_nav")
+
+	@Column(name = "is_top_nav")
 	public int getIsTopNav() {
 		return isTopNav;
 	}
+
 	public void setIsTopNav(int isTopNav) {
 		this.isTopNav = isTopNav;
 	}
+
 	public int getRecommend() {
 		return recommend;
 	}
+
 	public void setRecommend(int recommend) {
 		this.recommend = recommend;
 	}
+
 	public int getStatus() {
 		return status;
 	}
+
 	public void setStatus(int status) {
 		this.status = status;
 	}
+
 	public int getOrders() {
 		return orders;
 	}
+
 	public void setOrders(int orders) {
 		this.orders = orders;
 	}
-	
+
+	public Channel() {
+	}
+
+	public Channel(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
 }

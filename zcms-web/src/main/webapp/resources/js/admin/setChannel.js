@@ -42,7 +42,6 @@ $(function(){
 	
 	function addGroupChannel(cs) {
 		var gid = $("#gid").val();
-		alert("11");
 		for(var i=0;i<cs.length;i++) {
 			var c = cs[i];
 			if(c.id>0) {
